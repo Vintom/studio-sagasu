@@ -22,13 +22,13 @@
       <!--<h2>スタジオ情報</h2>-->
       <p class="studio-list">電話番号: <strong><%= tel_to @studio.tel, @studio.tel, onclick: "ga('send', 'event', 'studio', 'tel', '#{@studio.slug}', 0, {'nonInteraction': 1});" %></strong></p>
       <p class="studio-list">営業時間:
-         <strong>
-           <% if @studio.late_night %>
-             <%= "#{@studio.start_hours&.strftime("%H:%M")} - #{(@studio.end_hours.hour + 24 ).to_s + @studio.end_hours&.strftime(":%M")}" %>
-           <% else %>
-             <%= "#{@studio.start_hours&.strftime("%H:%M")} - #{@studio.end_hours&.strftime("%H:%M")}" %>
-           <% end %>
-         </strong>
+        <strong>
+          <% if @studio.late_night %>
+            <%= "#{@studio.start_hours&.strftime("%H:%M")} - #{(@studio.end_hours.hour + 24 ).to_s + @studio.end_hours&.strftime(":%M")}" %>
+          <% else %>
+            <%= "#{@studio.start_hours&.strftime("%H:%M")} - #{@studio.end_hours&.strftime("%H:%M")}" %>
+          <% end %>
+        </strong>
       </p>
       <% if @studio.address.present? %>
         <p class="studio-list">住所: <strong><%= @studio.address %></strong></p>
@@ -112,8 +112,16 @@
                 <%= image_tag studio_image_studio_path(studio), class: "recommend" %>
               <% end %>
             </div>
-            <p><%= studio.name %></p>
           <% end %>
+          <div class="studio-name"><strong><%= studio.name %></strong></div>
+          <div><%= "#{studio.nearest_station_1}駅" -%>
+             <%= ",#{studio.nearest_station_2}駅" if studio.nearest_station_2.present? -%>
+             <%= ",#{studio.nearest_station_3}駅" if studio.nearest_station_3.present? -%></div>
+           <p style="text-align: right">
+             <%= link_to studio_path(studio), method: :get do %>
+               <i class="fas fa-chevron-circle-right"></i> 詳細はこちら
+             <% end %>
+           </p>
         </div>
       <% end %>
     </div>

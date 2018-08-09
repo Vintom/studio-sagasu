@@ -11,6 +11,16 @@
   padding: 4px 8px;
 }
 
+.price_unit_recommend {
+  color: white;
+  position: absolute;
+  background-color: black;
+  bottom: 12px;
+  right: 25px;
+  padding: 4px 8px;
+  margin: 0;
+}
+
 .col3 {
   @media screen and (min-width: 768px) {
     width: 33%;
@@ -27,4 +37,66 @@ img.recommend {
   width: 84%;
   height: 100%;
   object-fit: cover;
+}
+
+body {
+  div {
+    div.recommend {
+      div {
+        div:nth-child(1) {
+          div:nth-child(3) {
+            font-size: small;
+            margin: 8px 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  div {
+    div.recommend {
+      div {
+        div:nth-child(2) {
+          div:nth-child(3) {
+            font-size: small;
+            margin: 8px 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  div {
+    div.recommend {
+      div {
+        div:nth-child(3) {
+          div:nth-child(3) {
+            font-size: small;
+            margin: 8px 0px;
+          }
+        }
+      }
+    }   
+  }
+}
+
+body {
+  div {
+    div.recommend {
+      div {
+        div.studio-name {
+            margin: 8px 0px;
+        }
+      }
+    }
+  }
+}
+
+.fa-chevron-circle-right {
+  font-family: FontAwesome;
+  font-style: normal;
 }
