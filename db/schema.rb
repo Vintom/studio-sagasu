@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180628131951) do
+ActiveRecord::Schema.define(version: 20180913084429) do
 
-  create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "email"
     t.string   "tel"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20180628131951) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "studio_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "studio_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "studio_id",  null: false
     t.string   "url"
     t.datetime "created_at", null: false
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20180628131951) do
     t.string   "meta_ogp_image_url"
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
+    t.string   "map_parameter"
   end
 
 end
