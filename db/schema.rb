@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180913084429) do
 
-  create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
     t.string   "tel"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20180913084429) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "studio_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "studio_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "studio_id",  null: false
     t.string   "url"
     t.datetime "created_at", null: false
