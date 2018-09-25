@@ -101,6 +101,11 @@
       </table> 
       <p class="right smaller">※最大人数、料金は目安です。詳細はスタジオにお問い合わせください。</p>
     <% end %>
+  <% if @studio.map_parameter.present? %>
+    <div style="text-align: center;">
+      <iframe src="<%= "https://www.google.com/maps/embed?pb=#{@studio.map_parameter}" %>" width="800" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+  <% end %>
   <div class="studio-detail-btn-box">
     <%= link_to sanitize("<i class='fas fa-chevron-circle-right'></i> スタジオのWEBサイトへ"), @studio.url, class: "btn btn-info btn-lg btn-block", target: "_blank", onclick: "ga('send', 'event', 'studio', 'click', '', 0, {'nonInteraction': 1});" if @studio.url.present? %>
     <%= tel_to @studio.tel, sanitize("<i class='fa fa-phone'></i> #{@studio.tel}"), {class: 'btn btn-success btn-lg btn-block', onclick: "ga('send', 'event', 'studio', 'tel', '#{@studio.slug}', 0, {'nonInteraction': 1});"} if @studio.tel.present? %>
