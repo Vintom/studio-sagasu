@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920143324) do
+ActiveRecord::Schema.define(version: 20180925081207) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20180920143324) do
     t.string   "meta_ogp_image_url"
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
+    t.text     "map_parameter",      limit: 65535
     t.index ["slug"], name: "index_studios_on_slug", unique: true, using: :btree
   end
 
