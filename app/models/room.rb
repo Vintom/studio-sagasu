@@ -7,4 +7,6 @@ class Room < ApplicationRecord
 
   enum status: { inactive: 0, active: 1 }
   enum floor: { 'フローリング': 1, 'リノリウム': 2, 'その他': 99 }
+
+  validates :capacity, presence: true
 end
