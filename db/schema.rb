@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20181114085207) do
     t.integer  "studio_id"
     t.string   "name"
     t.integer  "size"
-    t.integer  "capacity",                   default: 0
+    t.integer  "capacity", null: false       default: 0
     t.integer  "price",                      default: 0
     t.string   "mirror"
     t.integer  "floor"
