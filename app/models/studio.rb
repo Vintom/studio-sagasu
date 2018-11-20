@@ -9,10 +9,6 @@ class Studio < ApplicationRecord
   has_many :rooms
   accepts_nested_attributes_for :studio_images
 
-  validates :late_night, presence: true
-  validates :locker_room, presence: true
-  validates :parking, presence: true
-
   scope :displayed, -> { where(status: Studio.statuses[:active]) }
   scope :by_area, ->(area) { where(area_id: Area.find_by(slug: area).id) if area.present? && area != 'all' }
   scope :by_people, lambda { |people|
