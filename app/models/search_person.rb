@@ -1,0 +1,2 @@
+class SearchPerson < ApplicationRecord
+end

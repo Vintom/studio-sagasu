@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181114085207) do
+ActiveRecord::Schema.define(version: 20181128093643) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20181114085207) do
     t.datetime "updated_at",                                 null: false
   end
 
+  create_table "search_people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "min"
+    t.integer  "max"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -78,21 +86,21 @@ ActiveRecord::Schema.define(version: 20181114085207) do
     t.string   "tel"
     t.time     "start_hours"
     t.time     "end_hours"
-    t.boolean  "late_night",                          default: false, null: false
-    t.boolean  "locker_room",                         default: false, null: false
-    t.boolean  "parking",                             default: false, null: false
+    t.boolean  "late_night",                       default: false, null: false
+    t.boolean  "locker_room",                      default: false, null: false
+    t.boolean  "parking",                          default: false, null: false
     t.string   "cancell_deadline"
     t.string   "url"
     t.text     "feature",            limit: 65535
     t.text     "remarks",            limit: 65535
     t.text     "memo",               limit: 65535
-    t.integer  "status",             limit: 1,        default: 0
+    t.integer  "status",             limit: 1,     default: 0
     t.string   "slug"
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_ogp_image_url"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.text     "latlng",             limit: 65535
     t.index ["slug"], name: "index_studios_on_slug", unique: true, using: :btree
   end
