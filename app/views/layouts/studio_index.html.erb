@@ -44,9 +44,9 @@
             &nbsp;
             <div class="form-group">
               <% if session[:people].present? %>
-                <%= select '', :people, People::LABELS.map{ |k,v| [v, k]}, {selected: session[:people]}, {class: 'form-control'} %>
+                <%= select '', :people, SearchPerson.all.map{|p| [p.name, p.id]}, {selected: session[:people]}, {class: 'form-control'} %>
               <% else %>
-                <%= select '', :people, People::LABELS.map{ |k,v| [v, k]}, {prompt: '人数'}, {class: 'form-control'} %>
+                <%= select '', :people, SearchPerson.all.map{|p| [p.name, p.id]}, {prompt: '人数'}, {class: 'form-control'} %>
               <% end %>
             </div>
             &nbsp;
