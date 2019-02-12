@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   get 'apply',to:'studios#apply'
+  get 'apply_confirm',to:'studios#apply_confirm'
   resources :accounts
   namespace :admin do
     root 'top#index'

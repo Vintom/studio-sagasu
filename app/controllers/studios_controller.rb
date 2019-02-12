@@ -107,4 +107,7 @@ class StudiosController < ApplicationController
 
   def apply
   end
+
+  def apply_confirm
+  end
 end
