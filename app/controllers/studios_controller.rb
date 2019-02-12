@@ -110,4 +110,7 @@ class StudiosController < ApplicationController
 
   def apply_confirm
   end
+
+  def apply_complete
+  end
 end
