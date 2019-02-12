@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'studio_image'
     end
   end
+  get 'apply',to:'studios#apply'
   resources :accounts
   namespace :admin do
     root 'top#index'
