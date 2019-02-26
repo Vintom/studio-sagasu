@@ -28,18 +28,6 @@
       </div>
     </nav>
     <%= yield %>
-    <div class="footer-copyright container-fluid">
-      <div class="row">
-        <div class="col-sm-6">
-          <a href="http://vintom.co.jp/" target='_blank' style="color:white;">
-            <%= image_tag('vintom_logo.png') %>
-            <p><small>All Right Reserved. Vintom, Inc.</small></p>
-          </a>
-        </div>
-        <div class="col-sm-6">
-          <p><%= link_to "スタジオを掲載したい方はこちら", apply_path, :style => "color:white;" %></p>
-        </div>
-      </div>
-    </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>

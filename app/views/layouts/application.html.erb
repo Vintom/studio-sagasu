@@ -56,11 +56,6 @@
       </div>
     </nav>
     <%= yield %>
-    <a href="http://vintom.co.jp/" target='_blank'>
-      <div class="l-footer-copyright col-sm-12">
-        <%= image_tag('vintom_logo.png') %>
-        <p><small>All Right Reserved. Vintom, Inc.</small></p>
-      </div>
-    </a>
+    <%= render 'shared/footer' %>
   </body>
 </html>
