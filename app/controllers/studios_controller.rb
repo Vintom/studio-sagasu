@@ -69,6 +69,16 @@ class StudiosController < ApplicationController
     end
   end
 
+  def apply
+    @studio = Studio.new
+  end
+
+  def apply_confirm
+  end
+
+  def apply_complete
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -105,12 +115,4 @@ class StudiosController < ApplicationController
     redirect_to studios_path(area: area, people: view_context.people_range_format(session[:people]))
   end
 
-  def apply
-  end
-
-  def apply_confirm
-  end
-
-  def apply_complete
-  end
 end
