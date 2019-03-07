@@ -74,6 +74,7 @@ class StudiosController < ApplicationController
   end
 
   def apply_confirm
+    @studio = Studio.new(studio_params)
   end
 
   def apply_complete
