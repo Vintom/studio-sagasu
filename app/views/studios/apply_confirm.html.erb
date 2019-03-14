@@ -1,45 +1,48 @@
 <%= form_for @studio do |f| %>
   <div>
-    <%= @studio.name %>
+    <p>スタジオ名: <%= @studio.name %></p>
   </div>
   <div>
-    <%= @studio.address %>
+    <p>エリア: </p>
   </div>
   <div>
-    <%= @studio.nearest_station_1 %>
+    <p>住所: <%= @studio.address %></p>
   </div>
   <div>
-    <%= @studio.nearest_station_2 %>
+    <p>最寄り駅1: <%= @studio.nearest_station_1 %></p>
   </div>
   <div>
-    <%= @studio.nearest_station_3 %>
+    <p>最寄り駅2: <%= @studio.nearest_station_2 %></p>
   </div>
   <div>
-    <%= @studio.tel %>
+    <p>最寄り駅3: <%= @studio.nearest_station_3 %></p>
   </div>
   <div>
-    <%= @studio.start_hours %>
+    <p>電話番号: <%= @studio.tel %></p>
   </div>
   <div>
-    <%= @studio.end_hours %>
+    <p>営業時間(開始): <%= @studio.start_hours %></p>
   </div>
   <div>
-    <%= @studio.late_night %>
+    <p>営業時間(終了): <%= @studio.end_hours %></p>
   </div>
   <div>
-    <%= @studio.locker_room %>
+    <p>深夜レンタル: <%= @studio.late_night %></p>
   </div>
   <div>
-    <%= @studio.parking %>
+    <p>ロッカールーム: <%= @studio.locker_room %></p>
   </div>
   <div>
-    <%= @studio.cancell_deadline %>
+    <p>駐車場: <%= @studio.parking %></p>
   </div>
   <div>
-    <%= @studio.url %>
+    <p>キャンセル期限: <%= @studio.cancell_deadline %></p>
   </div>
   <div>
-    <%= @studio.feature %>
+    <p>スタジオHP: <%= @studio.url %></p>
+  </div>
+  <div>
+    <p>特徴: <%= @studio.feature %></p>
   </div>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :address %>
