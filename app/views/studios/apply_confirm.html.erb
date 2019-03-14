@@ -1,6 +1,65 @@
-<!--TODO: 登録情報確認の中身を入れる-->
-ここに登録情報内容の確認が入る
-<!--TODO: form_forで書き換える-->
-<form action="/apply_complete" method="GET">
-  <input type="submit" value="送信する"/>
-</form>
+<%= form_for @studio do |f| %>
+  <div>
+    <%= @studio.name %>
+  </div>
+  <div>
+    <%= @studio.address %>
+  </div>
+  <div>
+    <%= @studio.nearest_station_1 %>
+  </div>
+  <div>
+    <%= @studio.nearest_station_2 %>
+  </div>
+  <div>
+    <%= @studio.nearest_station_3 %>
+  </div>
+  <div>
+    <%= @studio.tel %>
+  </div>
+  <div>
+    <%= @studio.start_hours %>
+  </div>
+  <div>
+    <%= @studio.end_hours %>
+  </div>
+  <div>
+    <%= @studio.late_night %>
+  </div>
+  <div>
+    <%= @studio.locker_room %>
+  </div>
+  <div>
+    <%= @studio.parking %>
+  </div>
+  <div>
+    <%= @studio.cancell_deadline %>
+  </div>
+  <div>
+    <%= @studio.url %>
+  </div>
+  <div>
+    <%= @studio.feature %>
+  </div>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :nearest_station_1 %>
+  <%= f.hidden_field :nearest_station_2 %>
+  <%= f.hidden_field :nearest_station_3 %>
+  <%= f.hidden_field :tel %>
+  <%= f.hidden_field :start_hours %>
+  <%= f.hidden_field :end_hours %>
+  <%= f.hidden_field :late_night %>
+  <%= f.hidden_field :locker_room %>
+  <%= f.hidden_field :parking %>
+  <%= f.hidden_field :cancell_deadline %>
+  <%= f.hidden_field :url %>
+  <%= f.hidden_field :feature %>
+
+  <div class="actions">
+    <%= f.submit '投稿画面に戻る', name: 'back' %>
+  </div>
+  <div class="actions">
+    <%= f.submit '送信する' %>
+  </div>
+<% end %>
