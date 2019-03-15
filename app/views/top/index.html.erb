@@ -18,11 +18,11 @@
     alert("ページが読み込まれました！");
   };
 $(function(){
-    $(window).on('beforeunload', function() {
+    $(window).on('pagehide', function() {
         return '投稿が完了していません。このまま移動しますか？';
     });
     $("input[type=submit]").click(function() {
-        $(window).off('beforeunload');
+        $(window).off('pagehide');
     });
 });
 </script>
