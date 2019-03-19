@@ -91,10 +91,12 @@ class StudiosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def studio_params
-    params.require(:studio).permit(:name, :prefecture, :city, :address, :nearest_station_1,
+    params.require(:studio).permit(:name, :area_id, :address, :nearest_station_1,
                                    :nearest_station_2, :nearest_station_3, :tel, :start_hours,
                                    :end_hours, :late_night, :locker_room, :parking,
-                                   :cancell_deadline, :image, :url, :feature, :remarks)
+                                   :cancell_deadline, :url, :feature, :remarks, :memo, :status,
+                                   :slug, :meta_title, :meta_description, :meta_ogp_image_url,
+                                   studio_images_attributes: [:id, :studio_id, :url])
   end
 
   def select_layout
