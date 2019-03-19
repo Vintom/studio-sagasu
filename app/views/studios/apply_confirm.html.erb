@@ -61,9 +61,9 @@
   <%= f.hidden_field :feature %>
 
   <div class="actions">
-    <%= f.submit '投稿画面に戻る', name: 'back' %>
-  </div>
-  <div class="actions">
     <%= f.submit '送信する' %>
+  </div>
+  <div>
+    <%= link_to '投稿画面に戻る', apply_path %>
   </div>
 <% end %>

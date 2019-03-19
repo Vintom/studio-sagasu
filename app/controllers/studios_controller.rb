@@ -35,13 +35,11 @@ class StudiosController < ApplicationController
     @studio = Studio.new(studio_params)
 
     respond_to do |format|
-      if params[:back]
-        format.html { render :apply }
-      elsif @studio.save
-        format.html { redirect_to @studio, notice: 'Studio was successfully created.' }
+      if @studio.save
+        format.html { redirect_to apply_complete_path, notice: 'Studio was successfully created.' }
         format.json { render :show, status: :created, location: @studio }
       else
-        format.html { render :apply }
+        format.html { redirect_to apply_path }
         format.json { render json: @studio.errors, status: :unprocessable_entity }
       end
     end
