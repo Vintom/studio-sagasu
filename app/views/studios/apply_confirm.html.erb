@@ -3,7 +3,7 @@
     <p>スタジオ名: <%= @studio.name %></p>
   </div>
   <div>
-    <p>エリア: </p>
+    <p>エリア: <%= Area.find(@studio.area_id).city %></p>
   </div>
   <div>
     <p>住所: <%= @studio.address %></p>
@@ -21,19 +21,19 @@
     <p>電話番号: <%= @studio.tel %></p>
   </div>
   <div>
-    <p>営業時間(開始): <%= @studio.start_hours %></p>
+    <p>営業時間(開始): <%= "#{@studio.start_hours.hour}:#{@studio.start_hours.min}" %></p>
   </div>
   <div>
-    <p>営業時間(終了): <%= @studio.end_hours %></p>
+    <p>営業時間(終了): <%= "#{@studio.end_hours.hour}:#{@studio.end_hours.min}" %></p>
   </div>
   <div>
-    <p>深夜レンタル: <%= @studio.late_night %></p>
+    <p>深夜レンタル: <%= @studio.late_night ? "有" : "無" %></p>
   </div>
   <div>
-    <p>ロッカールーム: <%= @studio.locker_room %></p>
+    <p>ロッカールーム: <%= @studio.locker_room ? "有" : "無" %></p>
   </div>
   <div>
-    <p>駐車場: <%= @studio.parking %></p>
+    <p>駐車場: <%= @studio.parking ? "有" : "無" %></p>
   </div>
   <div>
     <p>キャンセル期限: <%= @studio.cancell_deadline %></p>
@@ -45,6 +45,7 @@
     <p>特徴: <%= @studio.feature %></p>
   </div>
   <%= f.hidden_field :name %>
+  <%= f.hidden_field :area_id %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :nearest_station_1 %>
   <%= f.hidden_field :nearest_station_2 %>
