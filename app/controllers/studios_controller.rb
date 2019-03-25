@@ -70,7 +70,11 @@ class StudiosController < ApplicationController
   end
 
   def apply
-    @studio = Studio.new
+    if params[:studio]
+      @studio = Studio.new(params[:studio])
+    else
+      @studio = Studio.new
+    end
   end
 
   def apply_confirm
