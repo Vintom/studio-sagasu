@@ -45,6 +45,7 @@
     <p>特徴: <%= @studio.feature %></p>
   </div>
   <%= f.hidden_field :name %>
+  <%= f.hidden_field :slug, :value => SecureRandom.hex(10) %>
   <%= f.hidden_field :area_id %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :nearest_station_1 %>
