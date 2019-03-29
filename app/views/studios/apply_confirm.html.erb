@@ -21,10 +21,10 @@
     <p>電話番号: <%= @studio.tel %></p>
   </div>
   <div>
-    <p>営業時間(開始): <%= "#{@studio.start_hours.hour}:#{@studio.start_hours.min}" %></p>
+    <p>営業時間(開始): <%= "#{@studio.start_hours.strftime('%H:%M')}" %></p>
   </div>
   <div>
-    <p>営業時間(終了): <%= "#{@studio.end_hours.hour}:#{@studio.end_hours.min}" %></p>
+    <p>営業時間(終了): <%= "#{@studio.end_hours.strftime('%H:%M')}" %></p>
   </div>
   <div>
     <p>深夜レンタル: <%= @studio.late_night ? "有" : "無" %></p>
