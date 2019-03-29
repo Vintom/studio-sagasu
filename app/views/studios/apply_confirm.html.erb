@@ -65,7 +65,7 @@
   <div class="actions">
     <%= f.submit '送信する' %>
   </div>
-  <div>
-    <%= link_to '投稿画面に戻る', apply_path, studio: @studio, method: :post %>
+  <div class="actions">
+    <%= f.submit '入力画面に戻る', name: 'back' %>
   </div>
 <% end %>
