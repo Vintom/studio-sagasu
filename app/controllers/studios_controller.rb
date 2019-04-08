@@ -33,6 +33,8 @@ class StudiosController < ApplicationController
   # POST /studios.json
   def create
     @studio = Studio.new(studio_params)
+    studio_image = @studio.studio_images.build
+    studio_image.url.retrieve_from_cache! params[:cache][:image]
 
     respond_to do |format|
       if params[:back]
@@ -73,6 +75,7 @@ class StudiosController < ApplicationController
 
   def apply
     @studio = Studio.new
+    @studio.studio_images.build
   end
 
   def apply_confirm
