@@ -44,6 +44,7 @@
   <div>
     <p>特徴: <%= @studio.feature %></p>
   </div>
+  <%= image_tag(@studio.studio_images.first.url) %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :slug, :value => SecureRandom.hex(10) %>
   <%= f.hidden_field :area_id %>
@@ -61,6 +62,7 @@
   <%= f.hidden_field :url %>
   <%= f.hidden_field :feature %>
   <%= f.hidden_field :status, :value => :reviewing %>
+  <%= hidden_field_tag :"cache[image]", @studio.studio_images.first.url.cache_name %>
 
   <div class="actions">
     <%= f.submit '送信する' %>
