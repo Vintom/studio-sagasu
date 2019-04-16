@@ -1,0 +1,73 @@
+<%= form_for @studio do |f| %>
+  <div>
+    <p>スタジオ名: <%= @studio.name %></p>
+  </div>
+  <div>
+    <p>エリア: <%= Area.find(@studio.area_id).city %></p>
+  </div>
+  <div>
+    <p>住所: <%= @studio.address %></p>
+  </div>
+  <div>
+    <p>最寄り駅1: <%= @studio.nearest_station_1 %></p>
+  </div>
+  <div>
+    <p>最寄り駅2: <%= @studio.nearest_station_2 %></p>
+  </div>
+  <div>
+    <p>最寄り駅3: <%= @studio.nearest_station_3 %></p>
+  </div>
+  <div>
+    <p>電話番号: <%= @studio.tel %></p>
+  </div>
+  <div>
+    <p>営業時間(開始): <%= "#{@studio.start_hours.strftime('%H:%M')}" %></p>
+  </div>
+  <div>
+    <p>営業時間(終了): <%= "#{@studio.end_hours.strftime('%H:%M')}" %></p>
+  </div>
+  <div>
+    <p>深夜レンタル: <%= @studio.late_night ? "有" : "無" %></p>
+  </div>
+  <div>
+    <p>ロッカールーム: <%= @studio.locker_room ? "有" : "無" %></p>
+  </div>
+  <div>
+    <p>駐車場: <%= @studio.parking ? "有" : "無" %></p>
+  </div>
+  <div>
+    <p>キャンセル期限: <%= @studio.cancell_deadline %></p>
+  </div>
+  <div>
+    <p>スタジオHP: <%= @studio.url %></p>
+  </div>
+  <div>
+    <p>特徴: <%= @studio.feature %></p>
+  </div>
+  <%= image_tag(@studio.studio_images.first.url) %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :slug, :value => SecureRandom.hex(10) %>
+  <%= f.hidden_field :area_id %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :nearest_station_1 %>
+  <%= f.hidden_field :nearest_station_2 %>
+  <%= f.hidden_field :nearest_station_3 %>
+  <%= f.hidden_field :tel %>
+  <%= f.hidden_field :start_hours %>
+  <%= f.hidden_field :end_hours %>
+  <%= f.hidden_field :late_night %>
+  <%= f.hidden_field :locker_room %>
+  <%= f.hidden_field :parking %>
+  <%= f.hidden_field :cancell_deadline %>
+  <%= f.hidden_field :url %>
+  <%= f.hidden_field :feature %>
+  <%= f.hidden_field :status, :value => :reviewing %>
+  <%= hidden_field_tag :"cache[image]", @studio.studio_images.first.url.cache_name %>
+
+  <div class="actions">
+    <%= f.submit '送信する' %>
+  </div>
+  <div class="actions">
+    <%= f.submit '入力画面に戻る', name: 'back' %>
+  </div>
+<% end %>

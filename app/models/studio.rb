@@ -23,7 +23,7 @@ class Studio < ApplicationRecord
     Studio.where(id: ids).order(['field(id, ?)', ids])
   }
 
-  enum status: { inactive: 0, active: 1 }
+  enum status: { inactive: 0, active: 1, reviewing: 2 }
   validates :slug, uniqueness: true
 
   def max_capacity

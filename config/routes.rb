@@ -7,6 +7,11 @@ Rails.application.routes.draw do
       get 'studio_image'
     end
   end
+  get 'apply',to:'studios#apply'
+  post 'apply',to:'studios#apply'
+  get 'apply_confirm',to:'studios#apply_confirm'
+  post 'apply_confirm',to:'studios#apply_confirm'
+  get 'apply_complete',to:'studios#apply_complete'
   resources :accounts
   namespace :admin do
     root 'top#index'

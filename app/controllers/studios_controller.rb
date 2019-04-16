@@ -33,13 +33,17 @@ class StudiosController < ApplicationController
   # POST /studios.json
   def create
     @studio = Studio.new(studio_params)
+    studio_image = @studio.studio_images.build
+    studio_image.url.retrieve_from_cache! params[:cache][:image]
 
     respond_to do |format|
-      if @studio.save
-        format.html { redirect_to @studio, notice: 'Studio was successfully created.' }
+      if params[:back]
+        format.html { render :apply}
+      elsif @studio.save
+        format.html { redirect_to apply_complete_path, notice: 'Studio was successfully created.' }
         format.json { render :show, status: :created, location: @studio }
       else
-        format.html { render :new }
+        format.html { render :apply }
         format.json { render json: @studio.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +73,18 @@ class StudiosController < ApplicationController
     end
   end
 
+  def apply
+    @studio = Studio.new
+    @studio.studio_images.build
+  end
+
+  def apply_confirm
+    @studio = Studio.new(studio_params)
+  end
+
+  def apply_complete
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -78,10 +94,12 @@ class StudiosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def studio_params
-    params.require(:studio).permit(:name, :prefecture, :city, :address, :nearest_station_1,
+    params.require(:studio).permit(:name, :area_id, :address, :nearest_station_1,
                                    :nearest_station_2, :nearest_station_3, :tel, :start_hours,
                                    :end_hours, :late_night, :locker_room, :parking,
-                                   :cancell_deadline, :image, :url, :feature, :remarks)
+                                   :cancell_deadline, :url, :feature, :remarks, :memo, :status,
+                                   :slug, :meta_title, :meta_description, :meta_ogp_image_url,
+                                   studio_images_attributes: [:id, :studio_id, :url])
   end
 
   def select_layout
@@ -104,4 +122,5 @@ class StudiosController < ApplicationController
            end
     redirect_to studios_path(area: area, people: view_context.people_range_format(session[:people]))
   end
+
 end
