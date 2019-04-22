@@ -96,3 +96,6 @@ gem 'dropzonejs-rails'
 
 # for image carousel
 gem 'jquery-slick-rails'
+
+# writing and deploying cron jobs
+gem 'whenever', require: false
