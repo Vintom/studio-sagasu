@@ -6,7 +6,7 @@ class ReportMailer < ApplicationMailer
     @inactive_studio = Studio.where(status: 0)
     @reviewing_studio = Studio.where(status: 2)
     mail(
-      subject: "sagasu.spaceスタジオ数週次レポート"
+      subject: "sagasu.spaceスタジオ数週次レポート",
       to: "all@vintom.co.jp"
     ) do |format|
       format.text
