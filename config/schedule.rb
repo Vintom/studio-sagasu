@@ -32,8 +32,8 @@ end
 
 # staging環境のジョブ指定
 if @environment.to_sym == :staging
-  # 火曜日のpm19時半にスケジューリング
-  every :tuesday, at: '7:45 pm' do
+  # 火曜日のpm11時20分にスケジューリング
+  every :tuesday, at: '11:20 pm' do
     rake "send_email:number_of_studios"
   end
 end
