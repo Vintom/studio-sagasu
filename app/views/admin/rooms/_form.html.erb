@@ -75,9 +75,9 @@
     <table class="table">
       <tr>
         <td>調光</td>
-        <td><%= f.check_box :dimmable, class: 'checkbox' %></td>
+        <td><%= f.select :dimmable, [ [ '無', 0 ], [ '有', 1 ], [ '不明', 99 ]], class: 'form-control' %></td>
         <td>Wi-Fi</td>
-        <td><%= f.check_box :wifi, class: 'checkbox' %></td>
+        <td><%= f.select :wifi, [ [ '無', 0 ], [ '有', 1 ], [ '不明', 99 ]], class: 'form-control' %></td>
       </tr>
     </table>
   </div>
