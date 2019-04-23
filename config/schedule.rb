@@ -21,11 +21,19 @@
 
 # 出力先のログファイルの指定
 set :output, 'log/cron.log'
-# ジョブの実行環境の指定
-set :environment, :production
 
-# 火曜日のpm9時にスケジューリング
-every :tuesday, at: '9:00 pm' do
-  rake "send_email:number_of_studios"
+# production環境のジョブ指定
+if @environment.to_sym == :production
+  # 火曜日のpm9時にスケジューリング
+  every :tuesday, at: '9:00 pm' do
+    rake "send_email:number_of_studios"
+  end
 end
 
+# staging環境のジョブ指定
+if @environment.to_sym == :staging
+  # 火曜日のpm19時半にスケジューリング
+  every :tuesday, at: '7:45 pm' do
+    rake "send_email:number_of_studios"
+  end
+end
