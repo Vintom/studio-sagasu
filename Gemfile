@@ -67,6 +67,8 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn', :git => 'git@github.com:noppefoxwolf/capistrano3-unicorn.git'
+  # avoid sending every mail in dev env
+  gem 'letter_opener'
 end
 
 group :production, :staging do
@@ -94,3 +96,6 @@ gem 'dropzonejs-rails'
 
 # for image carousel
 gem 'jquery-slick-rails'
+
+# writing and deploying cron jobs
+gem 'whenever', require: false
