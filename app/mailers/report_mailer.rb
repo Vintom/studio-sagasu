@@ -9,7 +9,7 @@ class ReportMailer < ApplicationMailer
       subject: "sagasu.spaceスタジオ数週次レポート",
       to: "all@vintom.co.jp"
     ) do |format|
-      format.text
+      format.html
     end
   end
 end
