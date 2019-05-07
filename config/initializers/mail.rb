@@ -10,6 +10,7 @@ if Rails.env.production?
     enable_starttls_auto: true
   }
 elsif Rails.env.development?
+  ActionMailer::Base.default_url_options = { host: 'localhost:3000' }
   ActionMailer::Base.delivery_method = :letter_opener
 else
   ActionMailer::Base.delivery_method = :test
