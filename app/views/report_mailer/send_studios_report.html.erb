@@ -6,9 +6,38 @@
   <body>
     <h1>sagasu.space登録スタジオ数</h1>
     <p>現在の登録スタジオ数をお知らせします。</p>
-    <p>active: <%= @active_studio.count %></p>
-    <p>inactive: <%= @inactive_studio.count %></p>
-    <p>reviewing: <%= @reviewing_studio.count %></p>
+    <table>
+      <caption>Active</caption>
+      <tr>
+        <th>都道府県</th>
+        <th>エリア</th>
+        <th>スタジオ数</th>
+        <th>ルーム数</th>
+      </tr>
+      <tr>
+        <th>合計</th>
+        <th>-</th>
+        <th><%= @active_studios.count %></th>
+        <th><%= @active_rooms.count %></th>
+      </tr>
+      <% @prefectures.each do |p| %>
+        <tr>
+          <td><%= p %></td>
+          <td>合計</td>
+          <td><%= @area_studios.where(areas: {prefecture: p}).count %></td>
+          <td><%= @area_studio_rooms.where(status: 1).where(areas: {prefecture: p}).count %></td>
+        </tr>
+        <% Area.where(prefecture: p).each do |a| %>
+          <tr>
+            <td><%= p %></td>
+            <td><%= a.city %></td>
+            <td><%= @active_studios.where(area_id: a.id).count %></td>
+            <td><%= @studio_rooms.where(status: 1).where(studios: {area_id: a.id}).count %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+
     <p>今週もお疲れ様でした！</p>
   </body>
 </html>
