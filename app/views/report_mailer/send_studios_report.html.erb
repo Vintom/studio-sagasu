@@ -6,37 +6,39 @@
   <body>
     <h1>sagasu.space登録スタジオ数</h1>
     <p>現在の登録スタジオ数をお知らせします。</p>
-    <table>
-      <caption>Active</caption>
-      <tr>
-        <th>都道府県</th>
-        <th>エリア</th>
-        <th>スタジオ数</th>
-        <th>ルーム数</th>
-      </tr>
-      <tr>
-        <th>合計</th>
-        <th>-</th>
-        <th><%= @active_studios.count %></th>
-        <th><%= @active_rooms.count %></th>
-      </tr>
-      <% @prefectures.each do |p| %>
-        <tr>
-          <td><%= p %></td>
-          <td>合計</td>
-          <td><%= @area_studios.where(areas: {prefecture: p}).count %></td>
-          <td><%= @area_studio_rooms.where(status: 1).where(areas: {prefecture: p}).count %></td>
-        </tr>
-        <% Area.where(prefecture: p).each do |a| %>
+    <% [1,0,2].each do |n| %>
+      <table>
+        <caption><%= Studio.statuses.key(n) %></caption>
           <tr>
-            <td><%= p %></td>
-            <td><%= a.city %></td>
-            <td><%= @active_studios.where(area_id: a.id).count %></td>
-            <td><%= @studio_rooms.where(status: 1).where(studios: {area_id: a.id}).count %></td>
+            <th>都道府県</th>
+            <th>エリア</th>
+            <th>スタジオ数</th>
+            <th>ルーム数</th>
           </tr>
-        <% end %>
-      <% end %>
-    </table>
+          <tr>
+            <th>合計</th>
+            <th>-</th>
+            <th><%= @studios.by_status(n).count %></th>
+            <th><%= @rooms.by_status(n).count %></th>
+          </tr>
+          <% @prefectures.each do |p| %>
+            <tr>
+              <td><%= p %></td>
+              <td>合計</td>
+              <td><%= @area_studios.by_status(n).where(areas: {prefecture: p}).count %></td>
+              <td><%= @area_studio_rooms.by_status(n).where(areas: {prefecture: p}).count %></td>
+            </tr>
+            <% Area.where(prefecture: p).each do |a| %>
+              <tr>
+                <td><%= p %></td>
+                <td><%= a.city %></td>
+                <td><%= @studios.by_status(n).where(area_id: a.id).count %></td>
+                <td><%= @studio_rooms.by_status(n).where(studios: {area_id: a.id}).count %></td>
+              </tr>
+            <% end %>
+          <% end %>
+      </table>
+    <% end %>
 
     <p>今週もお疲れ様でした！</p>
   </body>
