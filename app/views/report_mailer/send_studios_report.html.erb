@@ -16,10 +16,10 @@
             <th>ルーム数</th>
           </tr>
           <tr>
-            <th>合計</th>
-            <th>-</th>
-            <th><%= @studios.by_status(n).count %></th>
-            <th><%= @rooms.by_status(n).count %></th>
+            <td>合計</td>
+            <td>-</td>
+            <td><%= @studios.by_status(n).count %></td>
+            <td><%= @rooms.by_status(n).count %></td>
           </tr>
           <% @prefectures.each do |p| %>
             <tr>
