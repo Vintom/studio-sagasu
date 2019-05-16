@@ -7,22 +7,22 @@
     <h1>sagasu.space登録スタジオ数</h1>
     <p>現在の登録スタジオ数をお知らせします。</p>
     <% [1,0,2].each do |n| %>
-      <table>
-        <caption><%= Studio.statuses.key(n) %></caption>
-          <tr>
+      <table style="border: 3px solid; border-collapse: collapse; max-width: 100%; text-align: left; margin-bottom: 1.5rem;">
+        <caption style="font-size: 1.5rem; font-weight: bold;"><%= Studio.statuses.key(n) %></caption>
+          <tr style="border: 3px solid; border-collapse: collapse;">
             <th>都道府県</th>
             <th>エリア</th>
             <th>スタジオ数</th>
             <th>ルーム数</th>
           </tr>
-          <tr>
+          <tr style="border: 3px solid; border-collapse: collapse; font-weight: bold;">
             <td>合計</td>
             <td>-</td>
             <td><%= @studios.by_status(n).count %></td>
             <td><%= @rooms.by_status(n).count %></td>
           </tr>
           <% @prefectures.each do |p| %>
-            <tr>
+            <tr style="border: 1px solid; border-collapse: collapse; font-weight: bold;">
               <td><%= p %></td>
               <td>合計</td>
               <td><%= @area_studios.by_status(n).where(areas: {prefecture: p}).count %></td>
