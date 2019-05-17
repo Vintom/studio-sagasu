@@ -6,7 +6,7 @@
   <body>
     <h1>sagasu.space登録スタジオ数</h1>
     <p>現在の登録スタジオ数をお知らせします。</p>
-    <% [1,0,2].each do |n| %>
+    <% ReportMailer::STATUS_NUMBER.each do |n| %>
       <table style="border: 3px solid; border-collapse: collapse; max-width: 100%; text-align: left; margin-bottom: 1.5rem;">
         <caption style="font-size: 1.5rem; font-weight: bold;"><%= Studio.statuses.key(n) %></caption>
           <tr style="border: 3px solid; border-collapse: collapse;">
