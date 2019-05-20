@@ -1,6 +1,6 @@
 class ReportMailer < ApplicationMailer
   default from: "noreply@vintom.co.jp"
-  STATUS_NUMBER = [1,0,2]
+  STATUS_ORDER = [1,0,2]
 
   def send_studios_report
     @studios = Studio.all

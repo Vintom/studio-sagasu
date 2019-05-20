@@ -6,9 +6,9 @@
   <body>
     <h1>sagasu.space登録スタジオ数</h1>
     <p>現在の登録スタジオ数をお知らせします。</p>
-    <% ReportMailer::STATUS_NUMBER.each do |n| %>
+    <% ReportMailer::STATUS_ORDER.each do |status| %>
       <table style="border: 3px solid; border-collapse: collapse; max-width: 100%; text-align: left; margin-bottom: 1.5rem;">
-        <caption style="font-size: 1.5rem; font-weight: bold;"><%= Studio.statuses.key(n) %></caption>
+        <caption style="font-size: 1.5rem; font-weight: bold;"><%= Studio.statuses.key(status) %></caption>
           <tr style="border: 3px solid; border-collapse: collapse;">
             <th>都道府県</th>
             <th>エリア</th>
@@ -18,22 +18,22 @@
           <tr style="border: 3px solid; border-collapse: collapse; font-weight: bold;">
             <td>合計</td>
             <td>-</td>
-            <td><%= @studios.by_status(n).count %></td>
-            <td><%= @rooms.by_status(n).count %></td>
+            <td><%= @studios.by_status(status).count %></td>
+            <td><%= @rooms.by_status(status).count %></td>
           </tr>
           <% @prefectures.each do |p| %>
             <tr style="border: 1px solid; border-collapse: collapse; font-weight: bold;">
               <td><%= p %></td>
               <td>合計</td>
-              <td><%= @area_studios.by_status(n).where(areas: {prefecture: p}).count %></td>
-              <td><%= @area_studio_rooms.by_status(n).where(areas: {prefecture: p}).count %></td>
+              <td><%= @area_studios.by_status(status).where(areas: {prefecture: p}).count %></td>
+              <td><%= @area_studio_rooms.by_status(status).where(areas: {prefecture: p}).count %></td>
             </tr>
             <% Area.where(prefecture: p).each do |a| %>
               <tr>
                 <td><%= p %></td>
                 <td><%= a.city %></td>
-                <td><%= @studios.by_status(n).where(area_id: a.id).count %></td>
-                <td><%= @studio_rooms.by_status(n).where(studios: {area_id: a.id}).count %></td>
+                <td><%= @studios.by_status(status).where(area_id: a.id).count %></td>
+                <td><%= @studio_rooms.by_status(status).where(studios: {area_id: a.id}).count %></td>
               </tr>
             <% end %>
           <% end %>
