@@ -11,7 +11,7 @@ class ReportMailer < ApplicationMailer
     @prefectures = Area.order(:id).group(:prefecture).pluck(:prefecture)
     mail(
       subject: "sagasu.spaceスタジオ数週次レポート",
-      to: "all@vintom.co.jp"
+      to: "all@vintom.co.jp, shikami@someya-gumi.org, someya@someya-gumi.org"
     ) do |format|
       format.html
     end
