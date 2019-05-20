@@ -22,8 +22,9 @@ class Studio < ApplicationRecord
     ids = joins(:rooms).group(:id).order('count_studios_id desc').count('studios.id').keys
     Studio.where(id: ids).order(['field(id, ?)', ids])
   }
+  scope :by_status, ->(status) { where(status: status)}
 
-  enum status: { inactive: 0, active: 1 }
+  enum status: { inactive: 0, active: 1, reviewing: 2 }
   validates :slug, uniqueness: true
 
   def max_capacity
