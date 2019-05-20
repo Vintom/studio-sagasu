@@ -7,6 +7,7 @@ set :pty, true
 set :git
 set :rbenv_ruby, '2.3.1'
 set :rbenv_type, :system
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do

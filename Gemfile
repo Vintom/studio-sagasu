@@ -67,6 +67,8 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn', :git => 'git@github.com:noppefoxwolf/capistrano3-unicorn.git'
+  # avoid sending every mail in dev env
+  gem 'letter_opener'
 end
 
 group :production, :staging do
@@ -97,3 +99,6 @@ gem 'jquery-slick-rails'
 
 # for ORM agnostic truly Object-Oriented view helper for Rails 3, 4, 5, and 6
 gem 'active_decorator'
+
+# writing and deploying cron jobs
+gem 'whenever', require: false
