@@ -5,6 +5,11 @@
   </head>
   <body>
     <h1>sagasu.space登録スタジオ数</h1>
+    <div style="border: 2px solid;">
+      <p><%= "・アクティブなスタジオ数は先週から#{@studios.by_status(1).count - @studios.by_last_week_status(1).count}個増えました。" %><br>
+      <%= "・停止中のスタジオ数は#{@studios.by_status(0).count}個です。" %><br>
+      <%= "・審査が必要なスタジオ数は#{@studios.by_status(2).count}個です。" %></p>
+    </div>
     <p>現在の登録スタジオ数をお知らせします。</p>
     <% ReportMailer::STATUS_ORDER.each do |status| %>
       <table style="border: 3px solid; border-collapse: collapse; max-width: 100%; text-align: left; margin-bottom: 1.5rem;">
