@@ -36,9 +36,9 @@
       <% if @studio.address.present? %>
         <p class="p-studio-list">住所: <strong><%= @studio.address %></strong></p>
       <% end %>
-      <p class="p-studio-list">深夜レンタル: <strong><%= @studio.late_night ? 'あり' : 'なし' %></strong></p>
-      <p class="p-studio-list">更衣室: <strong><%= @studio.locker_room ? 'あり' : 'なし' %></strong></p>
-      <p class="p-studio-list">駐車場: <strong><%= @studio.parking ? 'あり' : 'なし' %></strong></p>
+      <p class="p-studio-list">深夜レンタル: <strong><%= @studio.late_night_label %></strong></p>
+      <p class="p-studio-list">更衣室: <strong><%= @studio.locker_room_label %></strong></p>
+      <p class="p-studio-list">駐車場: <strong><%= @studio.parking_label %></strong></p>
       <p class="p-studio-list">キャンセル期限: <strong><%= @studio.cancell_deadline.blank? ? '特になし' : @studio.cancell_deadline %></strong></p>
       <p class="p-studio-list">備考: <strong><%= @studio.remarks.blank? ? '特になし' : @studio.remarks %></strong></p>
     </div>
@@ -55,8 +55,7 @@
               <th class="text-center">鏡</th>
               <th class="text-center">床材</th>
               <th class="text-center">CD</th>
-              <th class="text-center">MD</th>
-              <th class="text-center">mp3</th>
+              <th class="text-center">その他音源(iPhoneなど)</th>
               <th class="text-center">照明調光</th>
               <th class="text-center">wifi</th>
             <% end %>
@@ -73,7 +72,6 @@
               <td class="text-center"><%= table_format(room.mirror) %></td>
               <td class="text-center"><%= room.floor %></td>
               <td class="text-center"><%= table_format(room.cd) %></td>
-              <td class="text-center"><%= table_format(room.md) %></td>
               <td class="text-center"><%= table_format(room.mp3) %></td>
               <td class="text-center"><%= table_format(room.dimmable) %></td>
               <td class="text-center"><%= table_format(room.wifi) %></td>

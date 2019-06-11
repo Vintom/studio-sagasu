@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190122123522) do
+ActiveRecord::Schema.define(version: 20190416144950) do
 
   create_table "areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "prefecture"
@@ -33,25 +33,25 @@ ActiveRecord::Schema.define(version: 20190122123522) do
     t.integer  "studio_id"
     t.string   "name"
     t.integer  "size"
-    t.integer  "capacity",                   default: 0,     null: false
-    t.integer  "price",                      default: 0,     null: false
+    t.integer  "capacity",                   default: 0, null: false
+    t.integer  "price",                      default: 0, null: false
     t.string   "mirror"
     t.integer  "floor"
-    t.boolean  "speaker",                    default: false, null: false
-    t.boolean  "mixer",                      default: false, null: false
-    t.boolean  "cd",                         default: false, null: false
-    t.boolean  "md",                         default: false, null: false
-    t.boolean  "mp3",                        default: false, null: false
+    t.integer  "speaker",      limit: 1,     default: 0, null: false
+    t.integer  "mixer",        limit: 1,     default: 0, null: false
+    t.integer  "cd",           limit: 1,     default: 0, null: false
+    t.integer  "md",           limit: 1,     default: 0, null: false
+    t.integer  "mp3",          limit: 1,     default: 0, null: false
     t.string   "other_source"
-    t.boolean  "dimmable",                   default: false, null: false
-    t.boolean  "wifi",                       default: false, null: false
+    t.integer  "dimmable",     limit: 1,     default: 0, null: false
+    t.integer  "wifi",         limit: 1,     default: 0, null: false
     t.string   "image"
     t.text     "feature",      limit: 65535
     t.text     "remarks",      limit: 65535
     t.text     "memo",         limit: 65535
     t.integer  "status",       limit: 1,     default: 0
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "studio_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(version: 20190122123522) do
     t.string   "tel"
     t.time     "start_hours"
     t.time     "end_hours"
-    t.boolean  "late_night",                       default: false, null: false
-    t.boolean  "locker_room",                      default: false, null: false
-    t.boolean  "parking",                          default: false, null: false
+    t.integer  "late_night",         limit: 1,     default: 0, null: false
+    t.integer  "locker_room",        limit: 1,     default: 0, null: false
+    t.integer  "parking",            limit: 1,     default: 0, null: false
     t.string   "cancell_deadline"
     t.string   "url"
     t.text     "feature",            limit: 65535
@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(version: 20190122123522) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_ogp_image_url"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.text     "latlng",             limit: 65535
     t.index ["slug"], name: "index_studios_on_slug", unique: true, using: :btree
   end

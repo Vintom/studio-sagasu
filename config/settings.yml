@@ -1,0 +1,4 @@
+status:
+  none: 0
+  exist: 1
+  unknown: 99

@@ -97,5 +97,8 @@ gem 'dropzonejs-rails'
 # for image carousel
 gem 'jquery-slick-rails'
 
+# for ORM agnostic truly Object-Oriented view helper for Rails 3, 4, 5, and 6
+gem 'active_decorator'
+
 # writing and deploying cron jobs
 gem 'whenever', require: false

@@ -51,23 +51,21 @@
     <table class="table">
       <tr>
         <td>スピーカー</td>
-        <td><%= f.check_box :speaker, class: 'checkbox' %></td>
+        <td><%= f.select :speaker, [ [ '無', 0 ], [ '有', 1 ], [ '不明', 99 ]], class: 'form-control' %></td>
         <td>ミキサー</td>
-        <td><%= f.check_box :mixer, class: 'checkbox' %></td>
+        <td><%= f.select :mixer, [ [ '無', 0 ], [ '有', 1 ], [ '不明', 99 ]], class: 'form-control' %></td>
       </tr>
       <tr>
         <td>CD</td>
-        <td><%= f.check_box :cd, class: 'checkbox' %></td>
-        <td>MD</td>
-        <td><%= f.check_box :md, class: 'checkbox' %></td>
-        <td>MP3</td>
-        <td><%= f.check_box :mp3, class: 'checkbox' %></td>
+        <td><%= f.select :cd, [ [ '無', 0 ], [ '有', 1 ], [ '不明', 99 ]], class: 'form-control' %></td>
+        <td>音楽プレイヤー（iPhone等）接続</td>
+        <td><%= f.select :mp3, [ [ '無', 0 ], [ '有', 1 ], [ '不明', 99 ]], class: 'form-control' %></td>
       </tr>
       <tr>
-        <td colspan="6"><%= f.label 'その他音源', class: 'control-label' %></td>
+        <td colspan="6"><%= f.label 'その他音響情報', class: 'control-label' %></td>
       </tr>
       <tr>
-        <td colspan="6"><%= f.text_field :other_source, class: 'form-control', placeholder: 'iPod' %></td>
+        <td colspan="6"><%= f.text_field :other_source, class: 'form-control', placeholder: 'ミキサーやスピーカーのスペックなど＋αの情報' %></td>
       </tr>
     </table>
   </div>
@@ -77,9 +75,9 @@
     <table class="table">
       <tr>
         <td>調光</td>
-        <td><%= f.check_box :dimmable, class: 'checkbox' %></td>
+        <td><%= f.select :dimmable, [ [ '無', 0 ], [ '有', 1 ], [ '不明', 99 ]], class: 'form-control' %></td>
         <td>Wi-Fi</td>
-        <td><%= f.check_box :wifi, class: 'checkbox' %></td>
+        <td><%= f.select :wifi, [ [ '無', 0 ], [ '有', 1 ], [ '不明', 99 ]], class: 'form-control' %></td>
       </tr>
     </table>
   </div>
