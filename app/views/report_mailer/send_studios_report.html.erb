@@ -4,35 +4,32 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>sagasu.space登録スタジオ数</h1>
-    <div style="border: 2px solid;">
-      <p><%= "・アクティブなスタジオ数は先週から#{@studios.by_status(1).count - @studios.by_last_week_status(1).count}個増えました。" %><br>
-      <%= "・停止中のスタジオ数は#{@studios.by_status(0).count}個です。" %><br>
-      <%= "・審査が必要なスタジオ数は#{@studios.by_status(2).count}個です。" %></p>
-      <p>※active...有効    inactive...停止中    reviewing...審査中</p>
+    <div>
+      <p><%= "・Activeなスタジオ数は#{@studios.by_status(1).count}です。先週から#{@studios.by_status(1).count - @studios.by_last_week_status(1).count}個増えました。" %><br>
+      <%= "・停止中(Inactive)のスタジオ数は#{@studios.by_status(0).count}個です。" %><br>
+      <%= "・審査(Reviewing)が必要なスタジオ数は#{@studios.by_status(2).count}個です。" %></p>
     </div>
-    <p>現在の登録スタジオ数をお知らせします。</p>
     <% ReportMailer::STATUS_ORDER.each do |status| %>
-      <table style="border: 3px solid; border-collapse: collapse; max-width: 100%; text-align: left; margin-bottom: 1.5rem;">
+      <table style="border-bottom: 1px solid; border-collapse: collapse; max-width: 100%; text-align: center; margin-bottom: 1.5rem;">
         <caption style="font-size: 1.5rem; font-weight: bold;"><%= Studio.statuses.key(status) %></caption>
-          <tr style="border: 3px solid; border-collapse: collapse;">
+          <tr style="border-bottom: 1px solid; border-collapse: collapse;">
             <th>都道府県</th>
             <th>エリア</th>
-            <th>スタジオ数</th>
+            <th>Studio</th>
             <th>前週比増減</th>
-            <th>ルーム数</th>
+            <th>Room</th>
             <th>前週比増減</th>
           </tr>
-          <tr style="border: 3px solid; border-collapse: collapse; font-weight: bold;">
-            <td>合計</td>
-            <td>-</td>
+          <tr style="border-bottom: 1px solid; border-collapse: collapse; font-weight: bold;">
+            <td></td>
+            <td></td>
             <td><%= @studios.by_status(status).count %></td>
             <td><%= @studios.by_status(status).count - @studios.by_last_week_status(status).count %></td>
             <td><%= @rooms.by_status(status).count %></td>
             <td><%= @rooms.by_status(status).count - @rooms.by_last_week_status(status).count %></td>
           </tr>
           <% @prefectures.each do |p| %>
-            <tr style="border: 1px solid; border-collapse: collapse; font-weight: bold;">
+            <tr style="border-top: 1px solid; border-collapse: collapse; font-weight: bold;">
               <td><%= p %></td>
               <td>合計</td>
               <td><%= @area_studios.by_status(status).where(areas: {prefecture: p}).count %></td>
@@ -42,7 +39,7 @@
             </tr>
             <% Area.where(prefecture: p).each do |a| %>
               <tr>
-                <td><%= p %></td>
+                <td></td>
                 <td><%= a.city %></td>
                 <td><%= @studios.by_status(status).where(area_id: a.id).count %></td>
                 <td><%= @studios.by_status(status).where(area_id: a.id).count - @studios.by_last_week_status(status).where(area_id: a.id).count %></td>
@@ -53,6 +50,7 @@
           <% end %>
       </table>
     <% end %>
+    <p>※増減は前週比の数値です。</p>
 
     <p>今週もお疲れ様でした！</p>
   </body>
