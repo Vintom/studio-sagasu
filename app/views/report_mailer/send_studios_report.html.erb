@@ -34,6 +34,7 @@
               <% else %>
                 <%= @rooms.by_status(status).count %><small><%= "(#{sprintf("%+d", @rooms.by_status(status).count - @rooms.by_last_week_status(status).count)})" %></small>
               <% end %>
+            </td>
           </tr>
           <% @prefectures.each do |p| %>
             <tr style="border-top: 1px solid; border-collapse: collapse; font-weight: bold;">
