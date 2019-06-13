@@ -16,35 +16,62 @@
             <th>都道府県</th>
             <th>エリア</th>
             <th>Studio</th>
-            <th>前週比増減</th>
             <th>Room</th>
-            <th>前週比増減</th>
           </tr>
           <tr style="border-bottom: 1px solid; border-collapse: collapse; font-weight: bold;">
             <td></td>
             <td></td>
-            <td><%= @studios.by_status(status).count %></td>
-            <td><%= @studios.by_status(status).count - @studios.by_last_week_status(status).count %></td>
-            <td><%= @rooms.by_status(status).count %></td>
-            <td><%= @rooms.by_status(status).count - @rooms.by_last_week_status(status).count %></td>
+            <td>
+              <% if @studios.by_status(status).count == @studios.by_last_week_status(status).count %>
+                <%= @studios.by_status(status).count %>
+              <% else %>
+                <%= @studios.by_status(status).count %><small><%= "(#{sprintf("%+d", @studios.by_status(status).count - @studios.by_last_week_status(status).count)})" %></small>
+              <% end %>
+            </td>
+            <td>
+              <% if @rooms.by_status(status).count == @rooms.by_last_week_status(status).count %>
+                <%= @rooms.by_status(status).count %>
+              <% else %>
+                <%= @rooms.by_status(status).count %><small><%= "(#{sprintf("%+d", @rooms.by_status(status).count - @rooms.by_last_week_status(status).count)})" %></small>
+              <% end %>
           </tr>
           <% @prefectures.each do |p| %>
             <tr style="border-top: 1px solid; border-collapse: collapse; font-weight: bold;">
               <td><%= p %></td>
               <td>合計</td>
-              <td><%= @area_studios.by_status(status).where(areas: {prefecture: p}).count %></td>
-              <td><%= @area_studios.by_status(status).where(areas: {prefecture: p}).count - @area_studios.by_last_week_status(status).where(areas: {prefecture: p}).count %></td>
-              <td><%= @area_studio_rooms.by_status(status).where(areas: {prefecture: p}).count %></td>
-              <td><%= @area_studio_rooms.by_status(status).where(areas: {prefecture: p}).count - @area_studio_rooms.by_last_week_status(status).where(areas: {prefecture: p}).count %></td>
+              <td>
+                <% if @area_studios.by_status(status).where(areas: {prefecture: p}).count == @area_studios.by_last_week_status(status).where(areas: {prefecture: p}).count %>
+                  <%= @area_studios.by_status(status).where(areas: {prefecture: p}).count %>
+                <% else %>
+                  <%= @area_studios.by_status(status).where(areas: {prefecture: p}).count %><small><%= "(#{sprintf("%+d", @area_studios.by_status(status).where(areas: {prefecture: p}).count - @area_studios.by_last_week_status(status).where(areas: {prefecture: p}).count)})" %></small>
+                <% end %>
+              </td>
+              <td>
+                <% if @area_studio_rooms.by_status(status).where(areas: {prefecture: p}).count == @area_studio_rooms.by_last_week_status(status).where(areas: {prefecture: p}).count %>
+                  <%= @area_studio_rooms.by_status(status).where(areas: {prefecture: p}).count %>
+                <% else %>
+                  <%= @area_studio_rooms.by_status(status).where(areas: {prefecture: p}).count %><small><%= "(#{sprintf("%+d", @area_studio_rooms.by_status(status).where(areas: {prefecture: p}).count - @area_studio_rooms.by_last_week_status(status).where(areas: {prefecture: p}).count)})" %></small>
+                <% end %>
+              </td>
             </tr>
             <% Area.where(prefecture: p).each do |a| %>
               <tr>
                 <td></td>
                 <td><%= a.city %></td>
-                <td><%= @studios.by_status(status).where(area_id: a.id).count %></td>
-                <td><%= @studios.by_status(status).where(area_id: a.id).count - @studios.by_last_week_status(status).where(area_id: a.id).count %></td>
-                <td><%= @studio_rooms.by_status(status).where(studios: {area_id: a.id}).count %></td>
-                <td><%= @studio_rooms.by_status(status).where(studios: {area_id: a.id}).count - @studio_rooms.by_last_week_status(status).where(studios: {area_id: a.id}).count %></td>
+                <td>
+                  <% if @studios.by_status(status).where(area_id: a.id).count == @studios.by_last_week_status(status).where(area_id: a.id).count %>
+                    <%= @studios.by_status(status).where(area_id: a.id).count %>
+                  <% else %>
+                    <%= @studios.by_status(status).where(area_id: a.id).count %><small><%= "(#{sprintf("%+d", @studios.by_status(status).where(area_id: a.id).count - @studios.by_last_week_status(status).where(area_id: a.id).count)})" %></small>
+                  <% end %>
+                </td>
+                <td>
+                  <% if @studio_rooms.by_status(status).where(studios: {area_id: a.id}).count == @studio_rooms.by_last_week_status(status).where(studios: {area_id: a.id}).count %>
+                    <%= @studio_rooms.by_status(status).where(studios: {area_id: a.id}).count %>
+                  <% else %>
+                    <%= @studio_rooms.by_status(status).where(studios: {area_id: a.id}).count %><small><%= "(#{sprintf("%+d", @studio_rooms.by_status(status).where(studios: {area_id: a.id}).count - @studio_rooms.by_last_week_status(status).where(studios: {area_id: a.id}).count)})" %></small>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           <% end %>
