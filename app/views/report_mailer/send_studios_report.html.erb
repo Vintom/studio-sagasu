@@ -12,18 +12,18 @@
     <% ReportMailer::STATUS_ORDER.each do |status| %>
       <table style="border-bottom: 1px solid; border-collapse: collapse; max-width: 100%; text-align: center; margin-top: 3rem;">
         <caption style="text-align: left; margin-bottom: 1.5rem;">
-          <%= "#{Studio.statuses.key(status).capitalize}なスタジオは前週比で#{sprintf("%+d", @studios.by_status(status).count - @studios.by_last_week_status(status).count)}、ルームは#{sprintf("%+d", @rooms.by_status(status).count - @rooms.by_last_week_status(status).count)}の増減で、#{@studios.by_status(status).count}スタジオ、#{@rooms.by_status(status).count}ルームになりました。" %><br>
+          <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数は前週比で#{sprintf("%+d", @studios.by_status(status).count - @studios.by_last_week_status(status).count)}、ルーム数は#{sprintf("%+d", @rooms.by_status(status).count - @rooms.by_last_week_status(status).count)}の増減で、#{@studios.by_status(status).count}スタジオ、#{@rooms.by_status(status).count}ルームになりました。" %><br>
           <% if @studios.by_status(status).count > @studios.by_last_week_status(status).count %>
             <% if status == 1 %>
               <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数が増えました！！ありがとうございます！！(^^)" %>
             <% else %>
-              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数が増えました。対応をお願いします。" %>
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数が増えました。ご対応をお願いします。" %>
             <% end %>
           <% elsif @studios.by_status(status).count == @studios.by_last_week_status(status).count %>
             <% if status == 1 %>
-              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数は変わりません。来週は増えるといいなあとよもさんが言ってました。" %>
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数は変化なしです。来週は増えるといいなあとよもさんが言ってました。" %>
             <% else %>
-              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数は変わりません。" %>
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数は変化なしです。" %>
             <% end %>
           <% else %>
             <% if status == 1 %>
