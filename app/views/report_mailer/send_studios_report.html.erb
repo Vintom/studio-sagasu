@@ -11,7 +11,29 @@
     </div>
     <% ReportMailer::STATUS_ORDER.each do |status| %>
       <table style="border-bottom: 1px solid; border-collapse: collapse; max-width: 100%; text-align: center; margin-bottom: 1.5rem;">
-        <caption style="font-size: 1.5rem; font-weight: bold;"><%= Studio.statuses.key(status) %></caption>
+        <caption style="text-align: left; margin-bottom: 1.5rem;">
+          <%= "#{Studio.statuses.key(status).capitalize}なスタジオは前週比で#{sprintf("%+d", @studios.by_status(status).count - @studios.by_last_week_status(status).count)}、ルームは#{sprintf("%+d", @rooms.by_status(status).count - @rooms.by_last_week_status(status).count)}の増減で、#{@studios.by_status(status).count}スタジオ、#{@rooms.by_status(status).count}ルームになりました。" %>
+          <% if @studios.by_status(status).count > @studios.by_last_week_status(status).count %>
+            <% if status == 1 %>
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数が増えました！！ありがとうございます！！(^^)" %>a
+            <% else %>
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数が増えました。対応をお願いします。" %>
+            <% end %>
+          <% elsif @studios.by_status(status).count == @studios.by_last_week_status(status).count %>
+            <% if status == 1 %>
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数は変わりません。来週は増えるといいなあとよもさんが言ってました。" %>
+            <% else %>
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数は変わりません。" %>
+            <% end %>
+          <% else %>
+            <% if status == 1 %>
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオが減ってしまいました。悲しいですね(;_;)" %>
+            <% else %>
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオが減りました。ご対応ありがとうございます(^^)" %>
+            <% end %>
+          <% end %>
+          内訳は以下のとおりです。
+        </caption>
           <tr style="border-bottom: 1px solid; border-collapse: collapse;">
             <th style="padding: 0 20px;">都道府県</th>
             <th style="padding: 0 20px;">エリア</th>
