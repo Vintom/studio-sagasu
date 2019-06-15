@@ -15,7 +15,7 @@
           <%= "#{Studio.statuses.key(status).capitalize}なスタジオは前週比で#{sprintf("%+d", @studios.by_status(status).count - @studios.by_last_week_status(status).count)}、ルームは#{sprintf("%+d", @rooms.by_status(status).count - @rooms.by_last_week_status(status).count)}の増減で、#{@studios.by_status(status).count}スタジオ、#{@rooms.by_status(status).count}ルームになりました。" %><br>
           <% if @studios.by_status(status).count > @studios.by_last_week_status(status).count %>
             <% if status == 1 %>
-              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数が増えました！！ありがとうございます！！(^^)" %>a
+              <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数が増えました！！ありがとうございます！！(^^)" %>
             <% else %>
               <%= "#{Studio.statuses.key(status).capitalize}なスタジオ数が増えました。対応をお願いします。" %>
             <% end %>
