@@ -5,7 +5,7 @@
   </head>
   <body>
     <div style="margin-bottom: 3rem;">
-      <p><%= "・Activeなスタジオ数は#{@studios.by_status(1).count}です。先週からの増減は#{@studios.by_status(1).count - @studios.by_last_week_status(1).count}です。" %><br>
+    <p><%= "・Activeなスタジオ数は#{@studios.by_status(1).count}です。先週からの増減は" %><%= @studios.by_status(1).count == @studios.by_last_week_status(1).count ? "ありません。" : "#{sprintf("%+d", @studios.by_status(1).count - @studios.by_last_week_status(1).count)}です。" %><br>
       <%= "・停止中(Inactive)のスタジオ数は#{@studios.by_status(0).count}個です。" %><br>
       <%= "・審査(Reviewing)が必要なスタジオ数は#{@studios.by_status(2).count}個です。" %></p>
     </div>
