@@ -4,13 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <div>
-      <p><%= "・Activeなスタジオ数は#{@studios.by_status(1).count}です。先週から#{@studios.by_status(1).count - @studios.by_last_week_status(1).count}個増えました。" %><br>
+    <div style="margin-bottom: 3rem;">
+      <p><%= "・Activeなスタジオ数は#{@studios.by_status(1).count}です。先週からの増減は#{@studios.by_status(1).count - @studios.by_last_week_status(1).count}です。" %><br>
       <%= "・停止中(Inactive)のスタジオ数は#{@studios.by_status(0).count}個です。" %><br>
       <%= "・審査(Reviewing)が必要なスタジオ数は#{@studios.by_status(2).count}個です。" %></p>
     </div>
     <% ReportMailer::STATUS_ORDER.each do |status| %>
-      <table style="border-bottom: 1px solid; border-collapse: collapse; max-width: 100%; text-align: center; margin-bottom: 1.5rem;">
+      <table style="border-bottom: 1px solid; border-collapse: collapse; max-width: 100%; text-align: center; margin-top: 3rem;">
         <caption style="text-align: left; margin-bottom: 1.5rem;">
           <%= "#{Studio.statuses.key(status).capitalize}なスタジオは前週比で#{sprintf("%+d", @studios.by_status(status).count - @studios.by_last_week_status(status).count)}、ルームは#{sprintf("%+d", @rooms.by_status(status).count - @rooms.by_last_week_status(status).count)}の増減で、#{@studios.by_status(status).count}スタジオ、#{@rooms.by_status(status).count}ルームになりました。" %>
           <% if @studios.by_status(status).count > @studios.by_last_week_status(status).count %>
@@ -35,22 +35,22 @@
           内訳は以下のとおりです。
         </caption>
           <tr style="border-bottom: 1px solid; border-collapse: collapse;">
-            <th style="padding: 0 20px;">都道府県</th>
-            <th style="padding: 0 20px;">エリア</th>
-            <th style="padding: 0 20px;">Studio</th>
-            <th style="padding: 0 20px;">Room</th>
+            <th style="padding-right: 40px; text-align: left;">都道府県</th>
+            <th style="text-align: left;">エリア</th>
+            <th style="padding-left: 40px; text-align: right;">Studio</th>
+            <th style="padding-left: 40px; text-align: right;">Room</th>
           </tr>
           <tr style="border-bottom: 1px solid; border-collapse: collapse; font-weight: bold;">
             <td></td>
             <td></td>
-            <td>
+            <td style="text-align: right;">
               <% if @studios.by_status(status).count == @studios.by_last_week_status(status).count %>
                 <%= @studios.by_status(status).count %>
               <% else %>
                 <%= @studios.by_status(status).count %><small><%= "(#{sprintf("%+d", @studios.by_status(status).count - @studios.by_last_week_status(status).count)})" %></small>
               <% end %>
             </td>
-            <td>
+            <td style="text-align: right;">
               <% if @rooms.by_status(status).count == @rooms.by_last_week_status(status).count %>
                 <%= @rooms.by_status(status).count %>
               <% else %>
@@ -60,16 +60,16 @@
           </tr>
           <% @prefectures.each do |p| %>
             <tr style="border-top: 1px solid; border-collapse: collapse; font-weight: bold;">
-              <td><%= p %></td>
-              <td>合計</td>
-              <td>
+              <td style="text-align: left;"><%= p %></td>
+              <td style="text-align: left;">合計</td>
+              <td style="text-align: right;">
                 <% if @area_studios.by_status(status).where(areas: {prefecture: p}).count == @area_studios.by_last_week_status(status).where(areas: {prefecture: p}).count %>
                   <%= @area_studios.by_status(status).where(areas: {prefecture: p}).count %>
                 <% else %>
                   <%= @area_studios.by_status(status).where(areas: {prefecture: p}).count %><small><%= "(#{sprintf("%+d", @area_studios.by_status(status).where(areas: {prefecture: p}).count - @area_studios.by_last_week_status(status).where(areas: {prefecture: p}).count)})" %></small>
                 <% end %>
               </td>
-              <td>
+              <td style="text-align: right;">
                 <% if @area_studio_rooms.by_status(status).where(areas: {prefecture: p}).count == @area_studio_rooms.by_last_week_status(status).where(areas: {prefecture: p}).count %>
                   <%= @area_studio_rooms.by_status(status).where(areas: {prefecture: p}).count %>
                 <% else %>
@@ -80,15 +80,15 @@
             <% Area.where(prefecture: p).each do |a| %>
               <tr>
                 <td></td>
-                <td><%= a.city %></td>
-                <td>
+                <td style="text-align: left;"><%= a.city %></td>
+                <td style="text-align: right;">
                   <% if @studios.by_status(status).where(area_id: a.id).count == @studios.by_last_week_status(status).where(area_id: a.id).count %>
                     <%= @studios.by_status(status).where(area_id: a.id).count %>
                   <% else %>
                     <%= @studios.by_status(status).where(area_id: a.id).count %><small><%= "(#{sprintf("%+d", @studios.by_status(status).where(area_id: a.id).count - @studios.by_last_week_status(status).where(area_id: a.id).count)})" %></small>
                   <% end %>
                 </td>
-                <td>
+                <td style="text-align: right;">
                   <% if @studio_rooms.by_status(status).where(studios: {area_id: a.id}).count == @studio_rooms.by_last_week_status(status).where(studios: {area_id: a.id}).count %>
                     <%= @studio_rooms.by_status(status).where(studios: {area_id: a.id}).count %>
                   <% else %>
