@@ -17,6 +17,9 @@
       <%= "#{studio.nearest_station_1}駅" -%>
       <%= " 他" if studio.nearest_station_2.present? %>
     </div>
+    <div class="p-feature">
+      <%= studio.feature %>
+    </div>
     <div class="studio-button"><%= link_to sanitize("<i class='fas fa-chevron-circle-right'></i> 詳細はこちら"), studio_path(studio), class: 'btn btn-info btn-block' %></div>
     <div class="studio-button">
       <% if studio.tel.present? %>

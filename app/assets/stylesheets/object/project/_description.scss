@@ -13,3 +13,13 @@
     float: left;
   }
 }
+.p-feature {
+  margin: 4px 0px;
+  font-size: 12px;
+  height: 45px;
+  line-height: 15px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
