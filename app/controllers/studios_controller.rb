@@ -10,7 +10,7 @@ class StudiosController < ApplicationController
     @studios = Studio.displayed.by_late_night(params[:late_night]&.to_i).by_locker_room(params[:locker_room])
                      .by_parking(params[:parking]).by_area(session[:area]).by_people(session[:people])
                      .page(params[:page])
-    @area = params[:area] == 'all' ? '首都圏' : Area.find_by(slug: session[:area]).city
+    @area = params[:area] == 'all' ? '首都圏' : Area.find_by(slug: session[:area])&.city
     @people = session[:people].blank? || session[:people] == '6' ? '' : "#{PeopleRange.find(session[:people]).name}で使える"
   end
 

@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <%= form_tag studios_path, class: "navbar-form navbar-right", role: "search", method: :get do %>
             <div class="form-group">
-              <% if session[:area] != 'all' %>
+              <% if session[:area] != 'all' && session[:area].to_i == 0 #TODO: 500エラー少なくなったら外す %>
                 <%= select '', :area, grouped_options_for_select(Area.all.group_by(&:prefecture).each{|area| area[1].map! {|x| [x.city, x.slug]}}), {prompt: Area.find_by(slug: session[:area]).city}, {class: 'form-control'} %>
               <% else %>
                 <%= select '', :area, grouped_options_for_select(Area.all.group_by(&:prefecture).each{|area| area[1].map! {|x| [x.city, x.slug]}}), {prompt: 'エリア'}, {class: 'form-control'} %>

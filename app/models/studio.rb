@@ -9,7 +9,7 @@ class Studio < ApplicationRecord
   accepts_nested_attributes_for :studio_images
 
   scope :displayed, -> { where(status: Studio.statuses[:active]) }
-  scope :by_area, ->(area) { where(area_id: Area.find_by(slug: area).id) if area.present? && area != 'all' }
+  scope :by_area, ->(area) { where(area_id: Area.find_by(slug: area)&.id) if area.present? && area != 'all' }
   scope :by_people, ->(people) {
     return all unless people.present?
     people_range = PeopleRange.find(people)
