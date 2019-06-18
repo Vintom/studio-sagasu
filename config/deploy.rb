@@ -1,7 +1,7 @@
 lock '3.11.0'
 
 set :application, 'v_studio'
-set :repo_url, 'git@github.com:Vintom/studio-sagasu.git'
+set :repo_url, "https://#{ENV['git_user']}:#{ENV['git_password']}@github.com/Vintom/studio-sagasu.git"
 set :deploy_to, '/var/www/app/v_studio'
 set :pty, true
 set :git
