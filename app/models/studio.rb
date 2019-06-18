@@ -23,6 +23,7 @@ class Studio < ApplicationRecord
     Studio.where(id: ids).order(['field(id, ?)', ids])
   }
   scope :by_status, ->(status) { where(status: status)}
+  scope :by_last_week_status, ->(last_week_status) { where(last_week_status: last_week_status)}
 
   enum status: { inactive: 0, active: 1, reviewing: 2 }
   validates :slug, uniqueness: true
