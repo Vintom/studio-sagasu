@@ -10,4 +10,3 @@ $ ->
     navSelector: "ul.pagination" # selector for the paged navigation (it will be hidden)
     nextSelector: "ul.pagination a[rel=next]" # selector for the NEXT link (to page 2)
     itemSelector: "#studios div.studio" # selector for all items you'll retrievejj:w
-
