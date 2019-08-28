@@ -85,16 +85,6 @@
   </div>
 
   <div class="form-group">
-    <%= f.label '特徴', class: 'control-label' %>
-    <%= f.text_area :feature, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label '備考', class: 'control-label' %>
-    <%= f.text_area :remarks, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
     <%= f.label 'ステータス', class: 'control-label' %>
     <%= f.select :status, Room.statuses.keys.to_a, {}, prompt: @room.status, class: 'form-control' %>
   </div>
