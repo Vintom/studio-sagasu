@@ -87,13 +87,13 @@
   </div>
 
   <div class="form-group">
-    <%= f.label '特徴', class: 'control-label' %>
+    <%= f.label 'スタジオの特徴　※SEO観点で非常に重要なため極力詳細を記載すること', class: 'control-label' %>
     <%= f.text_area :feature, class: 'form-control', placeholder: '日本最大のストリートダンサー専門プロダクションの運営、日本一の大学ダンスサークルを決めるJapan Dancers’ Championshipをはじめとしたイベント企画・制作、他社メディアとも提携したダンサープラットフォームを活かしたブランド認知支援・広告宣伝活動支援などダンスに関わる様々な事業を行っています。' %>
   </div>
 
   <div class="form-group">
-    <%= f.label '備考', class: 'control-label' %>
-    <%= f.text_area :remarks, class: 'form-control' %>
+    <%= f.label '利用にあたっての注意事項', class: 'control-label' %>
+    <%= f.text_area :remarks, class: 'form-control', placeholder: '前日までに入金の確認ができない場合は、自動的にキャンセル扱いとします。' %>
   </div>
 
   <div class="form-group">
@@ -103,7 +103,7 @@
 
   <div class="form-group">
     <%= f.label '事務局メモ', class: 'control-label' %>
-    <%= f.text_area :memo, class: 'form-control' %>
+    <%= f.text_area :memo, class: 'form-control', placeholder: '190401愛甲: webサイトの情報をベースに登録' %>
   </div>
 
   <div class="form-group">
